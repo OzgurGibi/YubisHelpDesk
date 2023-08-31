@@ -13,12 +13,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
       - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3.2.0
         with:
           dotnet-version: 7.0
       - name: Publish .NET Core Project
         run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o release --nologo
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action
-        with:
-          folder: build # The folder the action should deploy.
+      - name: Deploy 🚀 GitHub Pages site
+        uses: actions/deploy-pages@v1.2.9    
