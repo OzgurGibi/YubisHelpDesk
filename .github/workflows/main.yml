@@ -28,7 +28,8 @@ jobs:
       #- name: Test
       #  run: dotnet test --no-restore --verbosity normal
       - name: Publish .NET Core Project
-        run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o website --nologo
+        #run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o website --nologo
+        run: dotnet publish Client/YubisHelpDesk.Client.csproj -c Release -o website --nologo
       - name: Add .nojekyll file
         run: touch website/wwwroot/.nojekyll
       - name: Commit wwwroot to GitHub Pages
