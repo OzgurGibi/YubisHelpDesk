@@ -6,6 +6,7 @@ on:
 permissions:
   contents: write
   id-token: write
+  pages: write
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
@@ -24,6 +25,9 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Publish .NET Core Project
-        run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o release --nologo
+        run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o website --nologo
       - name: Deploy 🚀 GitHub Pages site
-        uses: actions/deploy-pages@v1.2.9    
+        uses: actions/deploy-pages@v1.2.9
+        with:
+          token: ${{ github.token }}
+          artifact_name: github-pages
