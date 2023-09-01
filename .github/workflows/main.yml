@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: website
-          path: Server/website/**
+          path: /home/runner/work/YubisHelpDesk/YubisHelpDesk/release/*
           if-no-files-found: error
       - name: Deploy 🚀 GitHub Pages site
         uses: actions/deploy-pages@v1.2.9
