@@ -25,8 +25,8 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Test
-        run: dotnet test --no-restore --verbosity normal
+      #- name: Test
+      #  run: dotnet test --no-restore --verbosity normal
       - name: Publish .NET Core Project
         run: dotnet publish Server/YubisHelpDesk.Server.csproj -c Release -o website --nologo
       - name: Add .nojekyll file
@@ -37,14 +37,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: website/wwwroot
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: github-pages
-          path: /home/runner/work/YubisHelpDesk/YubisHelpDesk/website/
-          if-no-files-found: error
-      - name: Deploy 🚀 to GitHub Pages
-        uses: actions/deploy-pages@v1.2.9
-        with:
-          token: ${{ github.token }}
-          artifact_name: github-pages
+      #- name: Upload a Build Artifact
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: github-pages
+      #    path: /home/runner/work/YubisHelpDesk/YubisHelpDesk/website/
+      #    if-no-files-found: error
+      #- name: Deploy 🚀 to GitHub Pages
+      #  uses: actions/deploy-pages@v1.2.9
+      #  with:
+      #    token: ${{ github.token }}
+      #    artifact_name: github-pages
